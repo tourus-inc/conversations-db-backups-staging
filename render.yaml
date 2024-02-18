@@ -12,5 +12,5 @@ services:
         fromDatabase:
           name: "[dev] conversations db"
           property: connectionString
-      - fromGroup: [Dev] Conversations
+      - fromGroup: "[Dev] Conversations"
 
