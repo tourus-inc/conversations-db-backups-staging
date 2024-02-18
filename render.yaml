@@ -12,7 +12,5 @@ services:
         fromDatabase:
           name: [dev] conversations db
           property: connectionString
-      - key: POSTGRES_VERSION
-        sync: false
       - fromGroup: [Dev] Conversations
 
