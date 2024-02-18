@@ -1,5 +1,5 @@
 services:
-  - name: backup-db
+  - name: "[dev] conversations db backup"
     type: cron
     schedule: "0 3 * * *"
     region: oregon
