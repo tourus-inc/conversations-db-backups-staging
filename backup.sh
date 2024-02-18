@@ -58,7 +58,7 @@ upload_to_bucket() {
 main() {
     ensure_bucket_exists
     echo "Taking backup and uploading it to S3..."
-    pg_dump_database | gzip | upload_to_bucket
+    pg_dump_database | upload_to_bucket
     echo "Done."
 }
 
