@@ -52,7 +52,7 @@ pg_dump_database() {
 upload_to_bucket() {
     # if the zipped backup file is larger than 50 GB add the --expected-size option
     # see https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html
-    s3 cp - "s3://$AWS_DB_BACKUPS_BUCKET_NAME/$AWS_DB_BACKUPS_FILENAME"
+    s3 cp - "s3://$AWS_DB_BACKUPS_BUCKET_NAME/$AWS_DB_BACKUPS_FILENAME.gz"
 }
 
 main() {
