@@ -9,15 +9,15 @@ s3() {
 }
 
 s3api() {
-    aws s3api "$1" --region "$AWS_DB_BACKUPS_REGION" --bucket "$AWS_DB_BACKUPS_BUCKET_DEV" "${@:2}"
+    aws s3api "$1" --region "$AWS_DB_BACKUPS_REGION" --bucket "$AWS_DB_BACKUPS_BUCKET_STAGING" "${@:2}"
 }
 
 bucket_exists() {
-    s3 ls "$AWS_DB_BACKUPS_BUCKET_DEV" &> /dev/null
+    s3 ls "$AWS_DB_BACKUPS_BUCKET_STAGING" &> /dev/null
 }
 
 create_bucket() {
-    echo "Bucket $AWS_DB_BACKUPS_BUCKET_DEV doesn't exist. Creating it now..."
+    echo "Bucket $AWS_DB_BACKUPS_BUCKET_STAGING doesn't exist. Creating it now..."
 
     # create bucket
     s3api create-bucket \
@@ -52,7 +52,7 @@ pg_dump_database() {
 upload_to_bucket() {
     # if the zipped backup file is larger than 50 GB add the --expected-size option
     # see https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html
-    s3 cp - "s3://$AWS_DB_BACKUPS_BUCKET_DEV/$AWS_DB_BACKUPS_FILENAME_DEV.gz"
+    s3 cp - "s3://$AWS_DB_BACKUPS_BUCKET_STAGING/$AWS_DB_BACKUPS_FILENAME_STAGING.gz"
 }
 
 main() {
