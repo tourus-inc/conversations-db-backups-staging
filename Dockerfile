@@ -2,7 +2,7 @@ FROM amazon/aws-cli:latest
 ARG POSTGRES_VERSION
 
 RUN yum update -y \
-    && yum install -y gzip readline-devel
+    && yum install -y gzip
 
 WORKDIR /scripts
 COPY install-pg-dump.sh .
